@@ -1,0 +1,5 @@
+<h2><%= @org.name %>'s Members</h2>
+<% @org.users.each do |u| %>
+  <p><%= link_to u.name, u %></p>
+  <p><%= u.job_title %></p>
+<% end %>

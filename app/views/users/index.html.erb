@@ -1,0 +1,6 @@
+<h1><%= pluralize(@all_users.count, "User") %></h1>
+<% @all_users.each do |u| %>
+  <p><%= link_to u.name, user_path(u) %></p>
+  <p><%= u.email %></p>
+  <p><%= u.job_title %></p>
+<% end %>

@@ -1,0 +1,4 @@
+<h2><%= @group.name.capitalize %></h2>
+<% @group.users.each do |user| %>
+  <p><%= link_to user.name, user %></p>
+<% end %>

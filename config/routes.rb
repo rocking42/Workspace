@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+
+  root 'pages#home'
+  get '/home' => 'pages#home'
+  get '/about' => 'pages#about'
+  get '/contact' => 'pages#contact'
+
+  get '/login' => 'session#new', as: 'login'
+  post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
+
+  resources :users
+
+  get '/org_join/:id' => 'organisations#join', as: 'org_join'
+  get '/organisation/:id' => 'organisations#user', as: 'org_user'
+  resources :organisations
+
+  get '/organisation_posts/:id' => 'organisation_posts#show', as: 'organisation_posts'
+  post '/organisation_posts/:id' => 'organisation_posts#create'
+  delete '/organisation_posts/:id' => 'organisation_posts#destroy'
+
+  resources :groups
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

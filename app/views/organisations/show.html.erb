@@ -1,0 +1,10 @@
+<h2><%= @org.name.capitalize %></h2>
+<p><%= @org.description %></p>
+<p><%= link_to "Members", org_user_path(@org.id) %></p>
+<p><%= link_to "All posts", organisation_posts_path(@org.id) %></p>
+<% @org.groups.each do |group| %>
+  <p><%= link_to group.name, group_path(group) %></p>
+<% end %>
+<% if @current_user.organisations.empty? %>
+  <p><%= link_to "Request to join", org_join_path %></p>
+<% end %>

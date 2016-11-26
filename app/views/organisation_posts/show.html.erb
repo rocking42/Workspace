@@ -1,0 +1,14 @@
+<h3><%= @org.name %>'s posts</h3>
+<% @org.organisation_posts.each do |post| %>
+  <% if post.user %>
+    <p><%= post.user.name %></p>
+  <% end %>
+  <p><%= post.post %></p>
+
+<% end %>
+<%= form_for(@post) do |f| %>
+  <p>
+  	<%= f.text_area :post, placeholder:"New task here" %>
+  </p>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
