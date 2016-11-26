@@ -5,3 +5,7 @@
 <% @group.users.each do |user| %>
   <p><%= link_to user.name, user %></p>
 <% end %>
+
+<% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
+  <%= link_to "Delete group", group_path(@group), method: :delete, data: { confirm: "Are you sure"} %>
+<% end %>

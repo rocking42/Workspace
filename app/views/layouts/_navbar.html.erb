@@ -9,7 +9,6 @@
         <% end %>
         <% if @current_user.present? %>
           <li><%= link_to "Workspace", @current_user.organisations.first %></li>
-          <li><%= link_to "Groupspace", "#" %></li>
           <li><%= link_to 'Logout', login_path, method: :delete %></li>
           <li><%= link_to @current_user.name, @current_user %></li>
         <% end %>

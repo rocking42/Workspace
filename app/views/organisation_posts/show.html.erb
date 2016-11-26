@@ -1,5 +1,5 @@
 <h3><%= @org.name %>'s posts</h3>
-<% @org.organisation_posts.each do |post| %>
+<% @all_post.each do |post| %>
   <% if post.user %>
     <p><%= post.user.name %></p>
   <% end %>

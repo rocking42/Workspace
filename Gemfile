@@ -27,12 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 # gem 'bootstrap-sass',          '~> 3.3.6'
-gem 'bootstrap', '~> 4.0.0.alpha5'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
-
+gem 'cloudinary'
 gem 'materialize-sass'
 
 # Use Unicorn as the app server

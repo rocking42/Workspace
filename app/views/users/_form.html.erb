@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
 <p>
   <%= f.label :name %>
   <%= f.text_field :name, required: true %>
@@ -27,6 +27,7 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 </p>
+<%= f.file_field :image, accept: 'image.jpeg, image.gif, image.png' %>
 <p>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 </p>

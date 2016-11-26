@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    a = Cloudinary::Uploader.upload(params["user"]["image"])
+    @user.image = a["public_id"]
     if @user.save
       session[:user_id] = @user.id
       flash[:create] = "Account created successfully"
@@ -48,6 +50,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :job_title, :password, :password_confirmation)
+    params.require(:user).permit(:image, :name, :email, :job_title, :password, :password_confirmation)
   end
 end

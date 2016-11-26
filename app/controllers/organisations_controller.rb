@@ -1,10 +1,17 @@
 class OrganisationsController < ApplicationController
+
+  before_action :authorized_user
+
   def index
     @all_org = Organisation.all
   end
 
   def show
+
     @org = Organisation.find_by id: params["id"]
+    @all_post = @org.organisation_posts.order('created_at')
+    #a = Cloudinary::Uploader.upload('app/assets/images/jack.png')
+    #@image = a["public_id"]
   end
 
   def user

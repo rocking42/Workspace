@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: d2lmonnult
+  api_key: '297887673615451'
+  api_secret: Oa8RwVKF_mTOkU68eeFEDhMhFrg
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: d2lmonnult
+  api_key: '297887673615451'
+  api_secret: Oa8RwVKF_mTOkU68eeFEDhMhFrg
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: d2lmonnult
+  api_key: '297887673615451'
+  api_secret: Oa8RwVKF_mTOkU68eeFEDhMhFrg
+  enhance_image_tag: true
+  static_image_support: false

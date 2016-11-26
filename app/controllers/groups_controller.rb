@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+
+  before_action :authorized_user
+
   def index
   end
 
@@ -31,7 +34,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-
+    @group = Group.find_by( id: params["id"]).delete
+    redirect_to @current_user.organisations.first
   end
 
   private
