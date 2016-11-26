@@ -21,6 +21,27 @@
   }
 }
 
+.profile-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+.image-profile {
+  border-radius: 50%;
+  width: 7vw;
+  height: 7vw;
+}
+
+.image-small {
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
+}
+
 .posts {
   text-align: center;
 }

@@ -16,8 +16,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    a = Cloudinary::Uploader.upload(params["user"]["image"])
-    @user.image = a["public_id"]
+    if params["user"]["image"]
+      a = Cloudinary::Uploader.upload(params["user"]["image"])
+      @user.image = a["public_id"]
+    else
+      @user.image = "d7lyubpaypdovu59qywz"
+    end
     if @user.save
       session[:user_id] = @user.id
       flash[:create] = "Account created successfully"
@@ -33,7 +37,12 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user
-    if @user.update(user_params)
+    @user.assign_attributes(user_params)
+    if params["user"]["image"]
+      a = Cloudinary::Uploader.upload(params["user"]["image"])
+      @user.image = a["public_id"]
+    end
+    if @user.save
       flash[:update] = "Account updated successfully"
       redirect_to @user
     else

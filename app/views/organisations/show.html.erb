@@ -17,7 +17,13 @@
             <% end %>
         </div>
         <div class="card-action">
-          <p>user pictures to come</p>
+          <% @org.users.each.with_index do |user, i| %>
+            <% if user.image && i <= 10 %>
+              <%= link_to user, class: "profile-spacing" do %>
+                <%= cl_image_tag("#{user.image}.jpg", class: "image-small")  %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -35,7 +41,19 @@
             <span class="card-title"><p><%= link_to group.name.capitalize, group_path(group), class: "blue-text text-lighten-5" %></p></span>
           </div>
           <div class="card-action">
-            <p>user pictures to come</p>
+            <% group.users.each.with_index do |user, i| %>
+              <% if user.image && i <= 10 %>
+                <%= link_to user, class: "profile-spacing" do %>
+                  <%= cl_image_tag("#{user.image}.jpg", class: "image-small")  %>
+                <% end %>
+              <% end %>
+            <% end %>
+            <% if group.users.count == 0 %>
+              <p style="height:33px;"></p>
+            <% end %>
+            <% if group.users.count < 6 %>
+              <p style="height:3px"></p><p style="height:3px"></p>
+            <% end %>
           </div>
         </div>
       </div>
