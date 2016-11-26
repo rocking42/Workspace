@@ -1,4 +1,7 @@
 <h2><%= @group.name.capitalize %></h2>
+<% if !@current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
+  <p><%= link_to 'Request to join group', group_join_path(@group.id) %></p>
+<% end %>
 <% @group.users.each do |user| %>
   <p><%= link_to user.name, user %></p>
 <% end %>

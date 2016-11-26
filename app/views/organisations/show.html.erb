@@ -1,10 +1,48 @@
+<% provide(:org, @org) %>
 <h2><%= @org.name.capitalize %></h2>
 <p><%= @org.description %></p>
-<p><%= link_to "Members", org_user_path(@org.id) %></p>
-<p><%= link_to "All posts", organisation_posts_path(@org.id) %></p>
-<% @org.groups.each do |group| %>
-  <p><%= link_to group.name, group_path(group) %></p>
-<% end %>
+<p><%= link_to "Members", org_user_path(@org) %></p>
+
+<div class="posts">
+  <div class="width row">
+    <div class="col s12 m12">
+      <div class="card blue darken-2 darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title"><p><%= link_to "All posts", organisation_posts_path(@org), class: "blue-text text-lighten-5" %></p></span>
+          <% 2.times do |n| %>
+            <p><%= @org.organisation_posts[n].post %></p>
+          <% end %>
+        </div>
+        <div class="card-action">
+          <p>user pictures to come</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="center">
+  <% @org.groups.each do |group| %>
+    <div class="width row">
+      <div class="col s12 m12">
+        <div class="card blue darken-2 darken-1 hoverable">
+          <div class="card-content white-text">
+            <span class="card-title"><p><%= link_to group.name.capitalize, group_path(group), class: "blue-text text-lighten-5" %></p></span>
+          </div>
+          <div class="card-action">
+            <p>user pictures to come</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- TODO add admin verification -->
+<p><%= link_to "Add a department", new_group_path %></p>
+
 <% if @current_user.organisations.empty? %>
   <p><%= link_to "Request to join", org_join_path %></p>
 <% end %>

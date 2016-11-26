@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   post '/organisation_posts/:id' => 'organisation_posts#create'
   delete '/organisation_posts/:id' => 'organisation_posts#destroy'
 
+  get '/group_join/:id' => 'groups#join', as: 'group_join'
+
   resources :groups
+  post '/groups' => 'groups#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
