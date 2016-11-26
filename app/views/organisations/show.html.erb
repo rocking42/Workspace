@@ -9,9 +9,11 @@
       <div class="card blue darken-2 darken-1 hoverable">
         <div class="card-content white-text">
           <span class="card-title"><p><%= link_to "All posts", organisation_posts_path(@org), class: "blue-text text-lighten-5" %></p></span>
-          <% 2.times do |n| %>
-            <p><%= @org.organisation_posts[n].post %></p>
-          <% end %>
+            <% 2.times do |n| %>
+              <% unless @org.organisation_posts[n].blank? %>
+                <p><%= @org.organisation_posts[n].post %></p>
+              <% end %>
+            <% end %>
         </div>
         <div class="card-action">
           <p>user pictures to come</p>

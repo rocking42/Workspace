@@ -11,11 +11,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    redirect_to root_url
     @group = @current_user.organisations.first
     @group.groups.new(group_params)
     if @group.save
-      @group
+      redirect_to organisation_url(@group.id)
     else
       render 'new'
     end
