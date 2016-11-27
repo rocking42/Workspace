@@ -7,11 +7,8 @@ class OrganisationsController < ApplicationController
   end
 
   def show
-
     @org = Organisation.find_by id: params["id"]
-    @all_post = @org.organisation_posts.order('created_at')
-    #a = Cloudinary::Uploader.upload('app/assets/images/jack.png')
-    #@image = a["public_id"]
+    @all_post = @org.organisation_posts.order('created_at desc')
   end
 
   def user
@@ -50,6 +47,9 @@ class OrganisationsController < ApplicationController
     @org = Organisation.find_by id: params["id"]
       @org.users << @current_user
       redirect_to @current_user
+  end
+
+  def calendar
   end
 
   def destroy

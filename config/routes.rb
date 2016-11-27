@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'org_cal/:id' => 'organisations#calendar', as: 'org_cal'
   get '/org_join/:id' => 'organisations#join', as: 'org_join'
   get '/organisation/:id' => 'organisations#user', as: 'org_user'
   resources :organisations
@@ -21,8 +22,12 @@ Rails.application.routes.draw do
 
   get '/group_join/:id' => 'groups#join', as: 'group_join'
 
+
   resources :groups
+  get '/group/:id' => 'groups#user', as: 'group_user'
   post '/groups' => 'groups#create'
+
+  resources :group_posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

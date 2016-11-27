@@ -36,6 +36,8 @@ o1.organisation_posts << op1 << op2 << op3 << op4 << op5 << op6 << op7 << op8 <<
 u1.organisation_posts << op1 << op3 << op5 << op7 << op9
 u2.organisation_posts << op2 << op4 << op6 << op8
 
+
+
 Group.destroy_all
 g1 = Group.create name: "marketing"
 g2 = Group.create name: "Dev ops"

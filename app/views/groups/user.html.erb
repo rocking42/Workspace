@@ -1,5 +1,5 @@
-<h2><%= @org.name.capitalize %>'s Members</h2>
-<% @org.users.each do |u| %>
+<h2><%= @group.name.capitalize %>'s Members</h2>
+<% @group.users.each do |u| %>
   <div class="user-display-all">
     <% if u.image %>
       <p><%= cl_image_tag("#{u.image}.jpg", class: "image-profile")  %></p>

@@ -27,9 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 # gem 'bootstrap-sass',          '~> 3.3.6'
-
+gem "simple_calendar", "~> 2.0"
 gem 'cloudinary'
 gem 'materialize-sass'
+gem 'bootstrap-wysihtml5-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

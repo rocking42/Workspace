@@ -38,6 +38,12 @@
   height: 3vw;
 }
 
+.user-display-all {
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+}
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
     margin-right: 0;
 }

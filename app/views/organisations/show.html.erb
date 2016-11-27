@@ -1,8 +1,8 @@
-<% provide(:org, @org) %>
+<% provide(:org, @org.to_yaml) %>
 <h2><%= @org.name.capitalize %></h2>
 <p><%= @org.description %></p>
 <p><%= link_to "Members", org_user_path(@org) %></p>
-<%#= cl_image_tag("#{@image}.jpg") %>
+<p><%= link_to "Shedule", org_cal_path(@org) %></p>
 
 <div class="posts">
   <div class="width row">
@@ -10,9 +10,11 @@
       <div class="card blue darken-2 darken-1 hoverable">
         <div class="card-content white-text">
           <span class="card-title"><p><%= link_to "All posts", organisation_posts_path(@org), class: "blue-text text-lighten-5" %></p></span>
-            <% 2.times do |n| %>
-              <% unless @all_post.blank? %>
-                <p><%= @all_post[n].post %></p>
+            <% if @all_post.count > 3 %>
+              <% 4.times do |n| %>
+                <% unless @all_post.blank? %>
+                    <p><%= @all_post[n].user.name %>: <%= truncate(@all_post[n].post, separator: " ") %></p>
+                <% end %>
               <% end %>
             <% end %>
         </div>

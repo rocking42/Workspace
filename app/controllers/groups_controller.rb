@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by id: params["id"]
+    @all_post = @group.group_posts.order('created_at desc')
   end
 
   def new
@@ -28,6 +29,10 @@ class GroupsController < ApplicationController
     @group.users << @current_user
     flash[:sucess] = "Group joined successfully"
     redirect_to @group
+  end
+
+  def user
+    @group = Group.find_by id: params["id"]
   end
 
   def edit
