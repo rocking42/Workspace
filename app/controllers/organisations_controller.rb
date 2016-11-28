@@ -50,8 +50,9 @@ class OrganisationsController < ApplicationController
   end
 
   def calendar
-    org = Organisation.find_by id: params["id"]
-    @group_projects = org.group_projects.all
+    @org = Organisation.find_by id: params["id"]
+    @groups = @org.groups.all
+    @group_projects = @org.group_projects.all
   end
 
   def destroy

@@ -4,7 +4,7 @@ class OrganisationPostsController < ApplicationController
 
   def show
     @org = Organisation.find_by id: params["id"]
-    @all_post = @org.organisation_posts.order('created_at')
+    @all_post = OrganisationPost.where( organisation_id: params["id"]).order('created_at desc').paginate(page: params[:page], per_page: 10)
     @post = @current_user.organisation_posts.new
   end
 
@@ -12,7 +12,12 @@ class OrganisationPostsController < ApplicationController
     @post = @current_user.organisation_posts.new(orgpost_params)
     @post.organisation_id = params["id"]
     if @post.save
-      redirect_to organisation_posts_path(params["id"])
+      respond_to do |format|
+        format.html { redirect_to organisation_posts_path(params["id"]) }
+        format.js #render comments/create.js.erb
+      end
+    else
+      render 'new'
     end
   end
 

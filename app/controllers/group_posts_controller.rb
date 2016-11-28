@@ -1,7 +1,7 @@
 class GroupPostsController < ApplicationController
   def show
     @group = Group.find_by id: params["id"]
-    @all_posts = @group.group_posts.all
+    @all_post = GroupPost.where( group_id: params["id"]).order('created_at desc').paginate( page: params[:page])
     @post = @group.group_posts.new
   end
 
@@ -10,7 +10,10 @@ class GroupPostsController < ApplicationController
     @post = @current_user.group_posts.new(group_post_params)
     @post.group_id = params[:subaction]
     if @post.save
-      redirect_to group_post_path(@group)
+      respond_to do |format|
+        format.html { redirect_to group_post_path(@group) }
+        format.js
+      end
     else
       render 'show'
     end

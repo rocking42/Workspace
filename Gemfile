@@ -30,8 +30,8 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem "simple_calendar", "~> 2.0"
 gem 'cloudinary'
 gem 'materialize-sass'
-gem 'bootstrap-wysihtml5-rails'
 
+gem 'will_paginate'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

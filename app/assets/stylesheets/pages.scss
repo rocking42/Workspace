@@ -21,6 +21,23 @@
   }
 }
 
+.org_input {
+  width: 87%;
+}
+
+.org_post {
+  margin-bottom: 4%;
+  margin-left: 2%;
+}
+
+// #new_organisation_post {
+//   position: fixed;
+//   top: 80vh;
+//   background: white;
+//   left: 15vw;
+//   width: 71%;
+// }
+
 .profile-spacing {
   margin: 0;
   padding: 0;
@@ -44,9 +61,9 @@
   margin: 0 10px;
 }
 
-.has-events {
-  background: rgba(255, 0, 0, 0.62);
-}
+// .has-events {
+//   background: rgba(255, 0, 0, 0.62);
+// }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
     margin-right: 0;
