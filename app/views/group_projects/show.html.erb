@@ -1,0 +1,10 @@
+<h3>Project: <%= @group_project.task %></h3>
+<% if !@current_user.group_projects.include?(@group_project) && @group.users.include?(@current_user)  %>
+  <%= link_to "Join Project", group_project_join_path, method: :post %>
+<% end %>
+<p><strong>Start Date: </strong><%= (@group_project.start_date).to_s(:short) %></p>
+<p><strong>End Date: </strong><%= (@group_project.end_date).to_s(:short) %></p>
+<h3>User Tasks</h3>
+<%= link_to 'New user task', new_user_task_path(@group_project) %>
+
+<%= render partial: "shared/user_task", locals: { :group_project => @group_project} %>

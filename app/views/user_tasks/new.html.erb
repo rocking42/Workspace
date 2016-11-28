@@ -1,0 +1,15 @@
+<%= form_for(@user_task, url: new_user_task_path(@group_project, @user_task), method: :post) do |f| %>
+
+<p>
+  <%= f.label :task %>
+  <%= f.text_field :task %>
+</p>
+<p>
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date %>
+</p>
+<p>
+  <%= f.submit class: 'btn btn-primary' %>
+</p>
+
+<% end %>

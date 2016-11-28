@@ -1,4 +1,9 @@
 <h2>Company schedule</h2>
-<%= month_calendar do |date| %>
+<%= month_calendar(attribute: :end_date,  events: @group_projects) do |date, meetings| %>
   <%= date %>
+  <% meetings.each do |meeting| %>
+    <div class="cal-type">
+      <p style="font-size:10px">Due: <%= meeting.task %></p>
+    </div>
+  <% end %>
 <% end %>

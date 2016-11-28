@@ -20,14 +20,22 @@ Rails.application.routes.draw do
   post '/organisation_posts/:id' => 'organisation_posts#create'
   delete '/organisation_posts/:id' => 'organisation_posts#destroy'
 
+  post '/group/:group_id/group_project_join/:id' => 'group_projects#join', as: 'group_project_join'
+  resources :groups do
+    resources :group_projects
+  end
   get '/group_join/:id' => 'groups#join', as: 'group_join'
-
-
-  resources :groups
+  get '/group_leave/:id' => 'groups#leave', as: 'group_leave'
   get '/group/:id' => 'groups#user', as: 'group_user'
   post '/groups' => 'groups#create'
 
   resources :group_posts
+
+  get '/group_projects/:group_project_id/user_tasks/new' => 'user_tasks#new', as: 'new_user_task'
+  post '/group_projects/:group_project_id/user_tasks/new' => 'user_tasks#create', as: 'user_tasks'
+  get '/group_projects/:group_project_id/user_tasks/:id' => 'user_tasks#show', as: 'user_task'
+  get '/group_projects/:group_project_id/user_tasks/:id/edit' => 'user_tasks#edit', as: 'edit_user_task'
+  patch '/group_projects/:group_project_id/user_tasks/:id' => 'user_tasks#update', as: 'update_user_task'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

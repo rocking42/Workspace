@@ -6,34 +6,23 @@
 
 <p><%= link_to "Members", group_user_path(@group) %></p>
 
-<div class="posts">
-  <div class="width row">
-    <div class="col s12 m12">
-      <div class="card blue darken-2 darken-1 hoverable">
-        <div class="card-content white-text">
-          <span class="card-title"><p><%= link_to "Group posts", group_post_path(@group), class: "blue-text text-lighten-5" %></p></span>
-          <% if @all_post.count > 3 %>
-            <% 4.times do |n| %>
-              <% unless @all_post.blank? %>
-                <p><%= @all_post[n].user.name %>: <%= truncate(@all_post[n].post, separator: " ") %></p>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="card-action">
-          <% @group.users.each.with_index do |user, i| %>
-            <% if user.image && i <= 10 %>
-              <%= link_to user, class: "profile-spacing" do %>
-                <%= cl_image_tag("#{user.image}.jpg", class: "image-small")  %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: "shared/post", locals: { :group => @group, :all_post => @all_post, :path => group_post_path(@group) } %>
 
+<% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
+  <%= link_to "Leave group", group_leave_path(@group) %>
+<% end %>
+<br>
 <% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
   <%= link_to "Delete group", group_path(@group), method: :delete, data: { confirm: "Are you sure"} %>
 <% end %>
+<h3>Projects</h3>
+
+<div class="center">
+  <% @group.group_projects.each do |group_project| %>
+    <%= render partial: "shared/group_project", locals: { :group => @group, :group_project => group_project } %>
+  <% end %>
+</div>
+
+<p><%= link_to "New project", new_group_group_project_path(@group) %></p>
+
+<%= link_to "group project", group_group_project_path(@group, 3) %>

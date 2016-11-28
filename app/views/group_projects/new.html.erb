@@ -1,0 +1,20 @@
+<h2>New Group Project</h2>
+
+<%= form_for(@group_project, url: group_group_projects_path(@group, @group_project), method: :post) do |f| %>
+
+  <p>
+    <%= f.label :task %>
+    <%= f.text_area :task %>
+  </p>
+  <p>
+    <%= f.label :start_date %>
+    <%= f.datetime_local_field :start_date %>
+  </p>
+  <p>
+    <%= f.label :end_date %>
+    <%= f.datetime_local_field :end_date %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-primary" %>
+  </p>
+<% end %>
