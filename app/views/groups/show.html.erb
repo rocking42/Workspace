@@ -17,12 +17,13 @@
 <% end %>
 <h3>Projects</h3>
 
+<!-- Modal Trigger -->
+<a class="" href="#modal1">Create Project</a>
+
 <div class="center">
-  <% @group.group_projects.each do |group_project| %>
-    <%= render partial: "shared/group_project", locals: { :group => @group, :group_project => group_project } %>
-  <% end %>
+  <%= render @group_project %>
 </div>
 
-<p><%= link_to "New project", new_group_group_project_path(@group) %></p>
 
-<%= link_to "group project", group_group_project_path(@group, 3) %>
+<!-- Modal Structure -->
+<%= render "new_project", locals: { :group => @group, :new_group_project => @new_group_project } %>

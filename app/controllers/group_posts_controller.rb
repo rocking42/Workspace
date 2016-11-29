@@ -1,7 +1,7 @@
 class GroupPostsController < ApplicationController
   def show
     @group = Group.find_by id: params["id"]
-    @all_post = GroupPost.where( group_id: params["id"]).order('created_at desc').paginate( page: params[:page])
+    @all_post = GroupPost.where( group_id: params["id"]).order('created_at desc').paginate( page: params[:page], per_page: 10)
     @post = @group.group_posts.new
   end
 

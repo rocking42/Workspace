@@ -1,0 +1,13 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for @group do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit %>
+        </div>
+    <% end %>
+  </div>
+</div>

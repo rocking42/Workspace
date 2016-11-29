@@ -1,5 +1,9 @@
 class UserTasksController < ApplicationController
   def show
+    @group_project = GroupProject.find_by id: params["group_project_id"]
+    @user_task = UserTask.find_by id: params["id"]
+    @all_post = TaskComment.where( user_task_id: params["id"]).order('created_at desc').paginate(page: params[:page], per_page: 10)
+    @post = @current_user.task_comments.new
   end
 
   def new

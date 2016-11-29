@@ -4,12 +4,12 @@
       <%= link_to organisation_post.user do %>
         <%= cl_image_tag("#{organisation_post.user.image}.jpg", class: "image-small")  %>
       <% end %>
+
     </p>
   </div>
   <div class="col s11">
     <br>
-    <strong><%= organisation_post.user.name %></strong>
+    <p><strong><%= organisation_post.user.name %></strong> <%= time_ago_in_words(organisation_post.created_at) %> ago</p>
     <p><%= organisation_post.post %></p>
   </div>
 </div>
-<hr>

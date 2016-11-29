@@ -7,12 +7,14 @@
 <%= render partial: "shared/post", locals: { :group => @org, :all_post => @all_post, :path => organisation_posts_path(@org) } %>
 
 <hr>
-
+<h3>Departments</h3>
+<!-- Modal Trigger -->
+<a href="#modal1">Create Department</a>
 <%= render partial: "shared/group", locals: { :org => @org } %>
-
-<!-- TODO add admin verification -->
-<p><%= link_to "Add a department", new_group_path %></p>
 
 <% if @current_user.organisations.empty? %>
   <p><%= link_to "Request to join", org_join_path %></p>
 <% end %>
+
+<!-- Modal Structure -->
+<%= render "new_group" %>

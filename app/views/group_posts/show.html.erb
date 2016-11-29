@@ -7,7 +7,8 @@
     <%= f.button "Post", class: "btn btn-primary org_post", name: "subaction", value: @group.id %>
   </p>
 <% end %>
-<div class="main">
-<%= render @all_post %>
-</div>
+<%= will_paginate @all_post %>
+  <div class="main">
+  <%= render @all_post %>
+  </div>
 <%= will_paginate @all_post %>

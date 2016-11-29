@@ -1,2 +1,18 @@
-<h1>UserTasks#show</h1>
-<p>Find me in app/views/user_tasks/show.html.erb</p>
+<h3><%= @user_task.task %></h3>
+<p>Covered by: <%= @user_task.user.name %></p>
+<p>
+Completed <%= @user_task.completed %>
+<p>End Date <%= @user_task.end_date.to_s(:short) %></p>
+
+
+<%= form_for( @post, remote: true) do |f| %>
+  <p>
+  	<%= f.text_area :comment, placeholder:"Post here", class: "org_input" %>
+    <%= f.button "Post", class: "btn btn-primary org_post", name: "subaction", value: @user_task.id %>
+  </p>
+<% end %>
+<%= will_paginate @all_post %>
+<div class="main">
+  <%= render @all_post %>
+</div>
+<%= will_paginate @all_post %>

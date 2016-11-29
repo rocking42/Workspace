@@ -8,8 +8,7 @@
   </div>
   <div class="col s11">
     <br>
-    <strong><%= group_post.user.name %></strong>
+    <p><strong><%= group_post.user.name %></strong> <%= time_ago_in_words(group_post.created_at) %> ago</p>
     <p><%= group_post.post %></p>
   </div>
 </div>
-<hr>

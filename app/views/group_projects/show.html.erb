@@ -5,6 +5,10 @@
 <p><strong>Start Date: </strong><%= (@group_project.start_date).to_s(:short) %></p>
 <p><strong>End Date: </strong><%= (@group_project.end_date).to_s(:short) %></p>
 <h3>User Tasks</h3>
-<%= link_to 'New user task', new_user_task_path(@group_project) %>
+<!-- Modal Trigger -->
+<a class="" href="#modal1">Create User Task</a>
 
 <%= render partial: "shared/user_task", locals: { :group_project => @group_project} %>
+
+<!-- Modal Structure -->
+<%= render "new_user_task", locals: { :user_task => @new_user_task, :group_project => @group_project } %>

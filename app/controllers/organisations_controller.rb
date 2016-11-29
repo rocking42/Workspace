@@ -9,6 +9,7 @@ class OrganisationsController < ApplicationController
   def show
     @org = Organisation.find_by id: params["id"]
     @all_post = @org.organisation_posts.order('created_at desc')
+    @group = Group.new
   end
 
   def user

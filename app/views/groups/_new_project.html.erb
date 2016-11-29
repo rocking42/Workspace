@@ -1,0 +1,22 @@
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <%= form_for(@new_group_project, url: group_group_projects_path(@group, @group_project), method: :post) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :task %>
+        <%= f.text_area :task %>
+      </div>
+      <div class="form-group">
+        <%= f.label :start_date %>
+        <%= f.datetime_local_field :start_date %>
+      </div>
+      <div class="form-group">
+        <%= f.label :end_date %>
+        <%= f.datetime_local_field :end_date %>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class GroupProjectsController < ApplicationController
   def show
     @group = Group.find_by id: params["group_id"]
     @group_project = GroupProject.find_by id: params["id"]
+    @new_user_task = UserTask.new
     @all_user_tasks = @group_project.user_tasks.all
   end
 

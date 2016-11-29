@@ -2,6 +2,7 @@
 <% @group_projects.each do |gp| %>
   <p><%= gp.start_date.to_s(:short) %> - <%= gp.end_date.to_s(:short) %> <%= gp.task %></p>
 <% end %>
+
 <%= month_calendar(attribute: :start_date,end_attribute: :end_date,  events: @group_projects) do |date, meetings| %>
 
   <%= date.strftime("%-d") %>
