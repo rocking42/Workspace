@@ -56,10 +56,20 @@ class OrganisationsController < ApplicationController
     @group_projects = @org.group_projects.all
   end
 
+  def time
+    @org = Organisation.find_by id: params["exorg"]
+    @exam = params["exam"]
+    respond_to do |format|
+      format.html { redirect_to org_cal_path(@exorg) }
+      format.js { @org }
+    end
+  end
+
   def destroy
     @org = Organisation.find_by( id: params["id"]).delete
     redirect_to root_url
   end
+
 
   private
 

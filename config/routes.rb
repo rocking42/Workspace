@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get '/group_projects/:group_project_id/user_tasks/:id/edit' => 'user_tasks#edit', as: 'edit_user_task'
   patch '/group_projects/:group_project_id/user_tasks/:id' => 'user_tasks#update', as: 'update_user_task'
 
+  get '/time_show' => 'organisations#time', as: 'time_show'
+
   resources :task_comments
 
   # The priority is based upon order of creation: first created -> highest priority.

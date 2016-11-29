@@ -21,6 +21,21 @@
   }
 }
 
+.simple-calendar {
+  position: absolute;
+  width: 67%;
+  left: 0px;
+}
+
+.time_table {
+  position: absolute;
+  left: 70%;
+}
+
+.calendar-heading {
+  text-align: center;
+}
+
 .main .row {
   border: 1px solid gainsboro;
   border-radius: 19px;
