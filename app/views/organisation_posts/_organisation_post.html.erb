@@ -10,6 +10,6 @@
   <div class="col s11">
     <br>
     <p><strong><%= organisation_post.user.name %></strong> <%= time_ago_in_words(organisation_post.created_at) %> ago</p>
-    <p><%= organisation_post.post %></p>
+    <p><%= organisation_post.post.html_safe %></p>
   </div>
 </div>

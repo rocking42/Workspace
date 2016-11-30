@@ -28,7 +28,8 @@ class GroupProjectsController < ApplicationController
   end
 
   def destroy
-    @group_project = GroupProject.find_by id: params["id"]
+    @group_project = GroupProject.find_by( id: params["id"]).delete
+    redirect_to @group_project.group
   end
 
   def join

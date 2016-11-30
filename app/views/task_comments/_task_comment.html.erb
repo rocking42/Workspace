@@ -9,6 +9,9 @@
   <div class="col s11">
     <br>
     <p><strong><%= task_comment.user.name %></strong> <%= time_ago_in_words(task_comment.created_at) %> ago</p>
-    <p><%= task_comment.comment %></p>
+    <% if task_comment.image.present? %>
+      <p><%= cl_image_tag("#{task_comment.image}.jpg", :width => 400) %></p>
+    <% end %>
+    <p><%= task_comment.comment.html_safe %></p>
   </div>
 </div>

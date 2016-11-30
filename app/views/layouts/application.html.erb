@@ -6,10 +6,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <%= cloudinary_js_config %>
   <%= csrf_meta_tags %>
 </head>
 <body >
 
+<%= javascript_include_tag Ckeditor.cdn_url %>
 <%= render 'layouts/navbar' %>
 
 <div class="container">
@@ -21,6 +24,7 @@
   <%= yield %>
 
 </div>
+
 
 </body>
 </html>

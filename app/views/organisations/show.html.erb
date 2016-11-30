@@ -3,9 +3,32 @@
 <p><%= @org.description %></p>
 <p><%= link_to "Members", org_user_path(@org) %></p>
 <p><%= link_to "Shedule", org_cal_path(@org) %></p>
+<div class="center">
+  <div class="row width">
+    <div class="col s12 m12">
+      <div class="card blue darken-2 darken-1 hoverable center">
+        <div class="card-content white-text">
+          <span class="card-title"><p ><%= link_to "Today", org_cal_path(@org), class: "white-text" %></p></span>
+          <hr>
+            <% @org.group_projects.each do |gp| %>
+              <% if gp.start_date <= Time.now && gp.end_date >= Time.now %>
+                  <p><%= gp.task %></p>
+                  <p><%= gp.start_date %></p>
+                  <hr>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="card-action">
+          <p><%= link_to "Full calendar", org_cal_path(@org), class: "white-text" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 <%= render partial: "shared/post", locals: { :group => @org, :all_post => @all_post, :path => organisation_posts_path(@org) } %>
-
+</div>
 <hr>
 <h3>Departments</h3>
 <!-- Modal Trigger -->

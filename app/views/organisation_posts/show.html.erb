@@ -1,7 +1,7 @@
 <h3><%= @org.name %>'s posts</h3>
 <hr>
 <%= form_for @post, remote: true do |f| %>
-  <p><%= f.text_area :post, placeholder:"New task here", class: "org_input" %>
+  <p><%= f.cktext_area :post, placeholder:"New task here", class: "org_input" %>
   <%= f.submit "Post", class: "btn btn-primary org_post" %></p>
 <% end %>
 <%= will_paginate @all_post %>

@@ -1,9 +1,9 @@
 <h3><%= @group.name.capitalize %>'s posts</h3>
-
 <hr>
+
 <%= form_for( @post, remote: true) do |f| %>
   <p>
-  	<%= f.text_area :post, placeholder:"Post here", class: "org_input" %>
+  	<%= f.cktext_area :post, placeholder:"Post here", class: "org_input" %>
     <%= f.button "Post", class: "btn btn-primary org_post", name: "subaction", value: @group.id %>
   </p>
 <% end %>
