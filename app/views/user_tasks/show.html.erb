@@ -1,14 +1,18 @@
 <h3><%= @user_task.task %></h3>
 <p>Covered by: <%= @user_task.user.name %></p>
-<p>
-Completed <%= @user_task.completed %>
+<p class="complete">Completed: <%= @user_task.completed %></p>
 <p>End Date <%= @user_task.end_date.to_s(:short) %></p>
+<% if @current_user == @user_task.user %>
+  <p><%= link_to "Finished?", complete_user_task_path(@user_task), remote: true %></p>
+<% end %>
 
-
-<%= form_for( @post, remote: true) do |f| %>
+<%= form_for( @post, remote: true, html: { multipart: true }) do |f| %>
   <p>
   	<%= f.text_area :comment, placeholder:"Post here", class: "org_input" %>
     <%= f.button "Post", class: "btn btn-primary org_post", name: "subaction", value: @user_task.id %>
+  </p>
+  <p>
+  <%= f.button "Post", class: "btn btn-primary org_post", name: "subaction", value: @user_task.id %>
   </p>
 <% end %>
 <%= will_paginate @all_post %>

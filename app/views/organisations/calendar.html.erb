@@ -7,7 +7,7 @@
   <% meetings.each do |meeting| %>
     <div>
       <% if !stuff.include?(meeting.group.name) %>
-        <p class="caldisplay" style="font-size:10px"><i class="fa fa-asterisk" aria-hidden="true"></i><%= link_to meeting.group.name, time_show_path(:exam => meeting.group.name, :exorg => @org), remote: true %></p>
+        <p class="caldisplay" style="font-size:10px"><i class="fa fa-asterisk" aria-hidden="true"></i><%= link_to meeting.group.name, time_show_path(:exam => meeting.group.name, :exorg => @org, :date => date), remote: true %></p>
         <% end %>
       <% stuff.push(meeting.group.name) %>
       <!-- <p style="font-size:10px"><%#= meeting.task %></p> -->
@@ -19,7 +19,7 @@
   <% test_var = @groups.first.name %>
 <% end %>
 <div class="hectic">
-  <%= render partial: "time_table", locals: { :org => @org, :time_stuff => test_var } %>
+  <%= render partial: "time_table", locals: { :org => @org, :time_stuff => test_var, :timer => (Time.now - 1.day) } %>
 </div>
 
 <!-- gp.start_date.strftime("%b") === "Dec" #true -->

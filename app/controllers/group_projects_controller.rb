@@ -27,6 +27,10 @@ class GroupProjectsController < ApplicationController
   def edit
   end
 
+  def destroy
+    @group_project = GroupProject.find_by id: params["id"]
+  end
+
   def join
     @group_project = GroupProject.find_by id: params["id"]
     @group_project.users << @current_user

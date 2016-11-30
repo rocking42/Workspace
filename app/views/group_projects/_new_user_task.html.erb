@@ -8,7 +8,7 @@
     </p>
     <p>
       <%= f.label :end_date %>
-      <%= f.date_field :end_date %>
+      <%= f.date_field :end_date, :value => Time.now.strftime('%Y-%m-%d') %>
     </p>
     <p>
       <%= f.submit class: 'btn btn-primary' %>

@@ -23,6 +23,16 @@ class UserTasksController < ApplicationController
     end
   end
 
+  def completed
+    @user_task = UserTask.find_by id: params[:id]
+    @user_task.completed = true
+    @user_task.save
+    respond_to do |format|
+      format.html { redirect_to root_url}
+      format.js
+    end
+  end
+
   def edit
   end
 

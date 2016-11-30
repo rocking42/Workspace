@@ -59,11 +59,15 @@ class OrganisationsController < ApplicationController
   def time
     @org = Organisation.find_by id: params["exorg"]
     @exam = params["exam"]
+    @start = params[:date]
     respond_to do |format|
       format.html { redirect_to org_cal_path(@exorg) }
       format.js { @org }
     end
   end
+  # we have the given date clicked as well as a start and end date range find out how to display all dates that would happen on that date for a given group
+  # @group_projects = @org.group_projects.where('DATE(start_date) = ?', start)
+  # @org.group_projects.where('DATE(start_date) = ?', params[:date].to_date)
 
   def destroy
     @org = Organisation.find_by( id: params["id"]).delete
