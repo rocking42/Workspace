@@ -1,15 +1,14 @@
 <% provide(:org, @org.to_yaml) %>
-<h2><%= @org.name.capitalize %></h2>
+<h2 class="thin"><%= @org.name.capitalize %></h2>
 <p><%= @org.description %></p>
 <p><%= link_to "Members", org_user_path(@org) %></p>
-<p><%= link_to "Shedule", org_cal_path(@org) %></p>
 
 <div class="center">
-  <div class="row width">
-    <div class="col s12 m12">
-      <div class="card blue darken-2 darken-1 hoverable center">
-        <div class="card-content white-text">
-          <span class="card-title"><p ><%= link_to "Today", org_cal_path(@org), class: "white-text" %></p></span>
+  <div class="row">
+    <div class="col s12 m4 offset-m2">
+      <div class="card hoverable center">
+        <div class="card-content">
+          <span class="card-title"><p ><%= link_to "Today", org_cal_path(@org) %></p></span>
           <hr>
             <% count = 0 %>
             <% @org.group_projects.each do |gp| %>
@@ -22,18 +21,17 @@
           <% end %>
         </div>
         <div class="card-action">
-          <p><%= link_to "Full calendar", org_cal_path(@org), class: "white-text" %></p>
+          <p><%= link_to "Full calendar", org_cal_path(@org), class: "blue-text" %></p>
         </div>
       </div>
     </div>
+  <%= render partial: "shared/post", locals: { :group => @org, :all_post => @all_post, :path => organisation_posts_path(@org) } %>
   </div>
-
-
-
-<%= render partial: "shared/post", locals: { :group => @org, :all_post => @all_post, :path => organisation_posts_path(@org) } %>
 </div>
+
+
 <hr>
-<h3>Departments</h3>
+<h3 class="thin">Departments</h3>
 <!-- Modal Trigger -->
 <a href="#modal1">Create Department</a>
 <%= render partial: "shared/group", locals: { :org => @org } %>

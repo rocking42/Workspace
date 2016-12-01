@@ -1,4 +1,4 @@
-<h2><%= @group.name.capitalize %></h2>
+<h2 class="thin"><%= @group.name.capitalize %></h2>
 
 <% if !@current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
   <p><%= link_to 'Request to join group', group_join_path(@group.id) %></p>
@@ -9,10 +9,11 @@
 <div class="center">
 <div class="row width">
   <div class="col s12 m12">
-    <div class="card blue darken-2 darken-1 hoverable center">
-      <div class="card-content white-text">
-        <span class="card-title"><p ><%= link_to "Today", org_cal_path(@group.organisation), class: "white-text" %></p></span>
+    <div class="card hoverable center">
+      <div class="card-content">
+        <span class="card-title"><p ><%= link_to "Today", org_cal_path(@group.organisation)%></p></span>
         <hr>
+        <p></p>
           <% count = 0 %>
           <% @group.organisation.group_projects.each do |gp| %>
             <% if gp.start_date <= Time.now && gp.end_date >= Time.now && count < 2 %>
@@ -24,11 +25,12 @@
         <% end %>
       </div>
       <div class="card-action">
-        <p><%= link_to "Full calendar", org_cal_path(@group.organisation), class: "white-text" %></p>
+        <p><%= link_to "Full calendar", org_cal_path(@group.organisation), class: "blue-text" %></p>
       </div>
     </div>
   </div>
 </div>
+
 <%= render partial: "shared/post", locals: { :group => @group, :all_post => @all_post, :path => group_post_path(@group) } %>
 </div>
 <% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
@@ -38,7 +40,7 @@
 <% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
   <%= link_to "Delete group", group_path(@group), method: :delete, data: { confirm: "Are you sure"} %>
 <% end %>
-<h3>Projects</h3>
+<h3 class="thin">Projects</h3>
 
 <!-- Modal Trigger -->
 <a class="" href="#modal1">Create Project</a>

@@ -1,4 +1,4 @@
-<h2 class="center">Company schedule</h2>
+<h2 class="center thin">Company schedule</h2>
 
 <%= month_calendar(attribute: :start_date,end_attribute: :end_date,  events: @group_projects) do |date, meetings| %>
 
@@ -19,8 +19,9 @@
   <% test_var = @groups.first.name %>
 <% end %>
 <div class="hectic">
-  <%= render partial: "time_table", locals: { :org => @org, :time_stuff => test_var, :timer => (Time.now - 1.day) } %>
+  <%= render partial: "time_table", locals: { :org => @org, :time_stuff => test_var, :timer => (Time.now + 1.day) } %>
 </div>
+<div style="height:88vh"></div>
 
 <!-- gp.start_date.strftime("%b") === "Dec" #true -->
 <!-- js needs to say meeting on click then append/replace a rendered partial passing in the variable of the department name -->

@@ -1,27 +1,58 @@
-<h2><%= @user.name %>'s profile</h2>
-<% if @user.image.present? %>
-  <%= cl_image_tag("#{@user.image}.jpg", class: "image-profile")  %>
-<% else %>
-  <%= cl_image_tag("d7lyubpaypdovu59qywz.jpg", class: "image-profile")  %>
-<% end %>
-<p><%= @user.email %></p>
-<p><%= @user.job_title %></p>
-<% if @current_user.organisations.blank? %>
-  <%= link_to "Find organisation", organisations_path %>
-<% end %>
-<% if @current_user == @user %>
-  <%= link_to "Edit User", edit_user_path(@current_user.id) %>
-<% end %>
+<div class="row">
+  <div class="col s7 m7">
+  <h2  class="thin"><%= @user.name %></h2>
+  <% if @user.image.present? %>
+    <%= cl_image_tag("#{@user.image}.jpg", class: "image-profile")  %>
+  <% else %>
+    <%= cl_image_tag("d7lyubpaypdovu59qywz.jpg", class: "image-profile")  %>
+  <% end %>
+  <p><%= @user.email %></p>
+  <p><%= @user.job_title %></p>
+  <% if @current_user.organisations.blank? %>
+    <%= link_to "Find organisation", organisations_path %>
+  <% end %>
+  <% if @current_user == @user %>
+    <%= link_to "Edit User", edit_user_path(@current_user.id) %>
+  <% end %>
+</div>
 
-<h3 class="center">User task</h3>
+
+<div class="col s12 m4 down">
+  <h3 class="center thin">Calendar</h3>
+  <div class="card hoverable center">
+    <div class="card-content ">
+      <span class="card-title"><p ><%= link_to "Due today", org_cal_path(@user.organisations.first), class: "" %></p></span>
+      <hr>
+      <p></p>
+        <% count = 0 %>
+        <% @user.user_tasks.each do |gp| %>
+          <% if gp.end_date == Date.current && count < 3&& gp.completed == false %>
+              <p><%= link_to gp.task, user_task_path(gp.group_project, gp) %></p>
+              <p>Due: <%= gp.end_date.to_s(:short) %></p>
+              <% count += 1 %>
+              <hr>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+<h3 class="center thin">User tasks</h3>
 <%= render partial: "shared/user_task", locals: { :group_project => @user} %>
 
-<h3 class="center">Projects</h3>
+<h3 class="center thin">Projects</h3>
 <div class="center">
   <% @user.group_projects.uniq.each do |group_project| %>
     <%= render partial: "shared/group_project", locals: { :group => @group, :group_project => group_project } %>
   <% end %>
 </div>
 
-<h3 class="center">Groups</h3>
+<h3 class="center thin">Groups</h3>
 <%= render partial: "shared/group", locals: { :org => @user } %>
