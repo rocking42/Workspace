@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_reader
+  
   has_secure_password
   has_many :organisation_posts, dependent: :destroy
   has_many :group_posts, dependent: :destroy

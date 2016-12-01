@@ -10,6 +10,7 @@ class TaskCommentsController < ApplicationController
     end
 
     if @post.save
+      TaskComment.where( user_id: @usertask.user.id).mark_as_read! :all, :for => @current_user
       respond_to do |format|
         # format.json { render :json => @post }
         format.js

@@ -6,6 +6,9 @@
 <% if @current_user == @user_task.user %>
   <p><%= link_to "Finished?", complete_user_task_path(@user_task), remote: true %></p>
 <% end %>
+<% if @current_user == @user %>
+  <% TaskComment.where( user_id: @user.id).mark_as_read! :all, :for => @current_user %>
+<% end %>
 
   <%= form_for( @post, remote: true, format: :js, authenticity_token: true, html: { remote: true, multipart: true }) do |f| %>
     <p>

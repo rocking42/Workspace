@@ -6,6 +6,7 @@
   <% else %>
     <%= cl_image_tag("d7lyubpaypdovu59qywz.jpg", class: "image-profile")  %>
   <% end %>
+
   <p><%= @user.email %></p>
   <p><%= @user.job_title %></p>
   <% if @current_user.organisations.blank? %>

@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find_by id: params["id"]
-
+    tf = TaskComment.first.user_task
+    @tc = TaskComment.where(user_id: params["id"])
+    @tf = UserTask.where(completed: false, user_id: @user.id)
   end
 
   def new
