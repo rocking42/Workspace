@@ -1,0 +1,27 @@
+<h2 class="center thin"><%= @user.name %>'s schedule</h2>
+
+<%= month_calendar(attribute: :end_date, events: @user_tasks) do |date, meetings| %>
+
+  <%= date.strftime("%-d") %>
+  <% stuff = [] %>
+  <% meetings.each do |meeting| %>
+    <div>
+      <% if !stuff.include?(meeting.task) %>
+        <p class="caldisplay" style="font-size:10px"><i class="fa fa-asterisk" aria-hidden="true"></i><%= link_to meeting.task, time_user_path(:exam => meeting.task, :exorg => @user, :date => date), remote: true %></p>
+        <% end %>
+      <% stuff.push(meeting.task) %>
+      <!-- <p style="font-size:10px"><%#= meeting.task %></p> -->
+    </div>
+  <% end %>
+<% end %>
+
+<% if @groups %>
+  <% test_var = @groups.first.name %>
+<% end %>
+<div class="hectic">
+  <%= render partial: "time_table", locals: { :org => @user, :time_stuff => test_var, :timer => (Time.now + 1.day) } %>
+</div>
+<div style="height:88vh"></div>
+
+<!-- gp.start_date.strftime("%b") === "Dec" #true -->
+<!-- js needs to say meeting on click then append/replace a rendered partial passing in the variable of the department name -->

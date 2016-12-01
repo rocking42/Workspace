@@ -1,7 +1,6 @@
 <div class="time_table">
-  
   <% count = 0 %>
-  <% @org.group_projects.each do |gp| %>
+  <% org.group_projects.each do |gp| %>
     <% if gp.group.name == time_stuff && timer.to_date >= (gp.start_date - 1.day) && timer.to_date <= gp.end_date %>
       <p><%= link_to gp.group.name, gp.group if count < 1 %></p>
       <p><%= gp.start_date.to_s(:short) %> - <%= gp.end_date.to_s(:short) %>

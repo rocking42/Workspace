@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
   resources :users
+  get '/user_cal/:id' => 'users#calendar', as: 'user_cal'
+  get '/time_show' => 'users#time', as: 'time_user'
 
   get 'org_cal/:id' => 'organisations#calendar', as: 'org_cal'
   get '/org_join/:id' => 'organisations#join', as: 'org_join'
   get '/organisation/:id' => 'organisations#user', as: 'org_user'
+  get '/time_org' => 'organisations#time', as: 'time_show'
   resources :organisations
 
   get '/organisation_posts/:id' => 'organisation_posts#show', as: 'organisation_posts'
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
   patch '/group_projects/:group_project_id/user_tasks/:id' => 'user_tasks#update', as: 'update_user_task'
   get '/user_tasks/:id' => 'user_tasks#completed', as: 'complete_user_task'
 
-  get '/time_show' => 'organisations#time', as: 'time_show'
+
 
   resources :task_comments
 

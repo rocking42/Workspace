@@ -52,6 +52,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def calendar
+    @user = User.find_by id: params["id"]
+    @group = @user.groups
+    @group_projects = @user.group_projects
+    @user_tasks = @user.user_tasks
+  end
+
+  def time
+    @org = User.find_by id: params["exorg"]
+    @exam = params["exam"]
+    @start = params[:date]
+    respond_to do |format|
+      format.html { redirect_to org_cal_path(@exorg) }
+      format.js { @org }
+    end
+  end
+
   def destroy
     @user = @current_user.delete
     flash[:delete] = "Account deleted successfully"
