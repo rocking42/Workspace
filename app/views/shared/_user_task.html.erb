@@ -1,11 +1,11 @@
-<div class="center">
+.<div class="center">
   <% group_project.user_tasks.each do |user_task| %>
     <% if !user_task.completed == true %>
     <div class="width row">
       <div class="col s12 m12">
         <div class="card blue darken-2 darken-1 hoverable">
           <div class="card-content white-text">
-            <span class="card-title "><p><%= link_to truncate(user_task.task, length: 25, separator: " "), user_task_path(user_task.group_project, user_task), class: "white-text" %></p></span>
+            <span class="card-title "><p><%= link_to truncate(user_task.task, length: 25, separator: " "), user_task_path(user_task.group_project, user_task.id), class: "white-text" %></p></span>
             <p>End Date: <%= user_task.end_date.to_s(:long) %></p>
           </div>
           <div class="card-action">

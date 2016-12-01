@@ -1,0 +1,70 @@
+<div class="row">
+
+
+
+  <div class="col s12 m10 offset-m1">
+    <div class="home section scrollspy" id="home">
+      <h1 id="header">Workspace</h1>
+      <%= link_to "Sign up now", new_user_path, class: "btn btn-primary center-align" %>
+    </div>
+
+    <div class="section scrollspy cont valign-wrapper">
+      <p class="section scrollspy black-text" id="initialization">hello</p>
+      <div class="valign">
+      <h3 class="section scrollspy white-text">What we're about</h3>
+      <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita voluptate dolor voluptatibus quia aperiam, odit qui. Molestiae a, voluptatibus tempora iusto, rem natus reiciendis ipsum neque ipsam assumenda dolores amet.</p>
+      </div>
+    </div>
+
+     <div id="structure" class="section scrollspy high">
+       <h3 class="center">Company snapshot</h3>
+       <div class="col s12 m4 center">
+         <div class="card hoverable center">
+           <div class="card-image">
+            <%= cl_image_tag("Screen_Shot_2016-12-01_at_12.28.16_pm_dljx2x.png", height: 230) %>
+                Complete user dashboard
+           </div>
+           <div class="card-action">
+             <p><%= "Full calendar" %></p>
+           </div>
+         </div>
+       </div>
+
+       <div class="col s12 m4 center">
+         <div class="card hoverable center">
+           <div class="card-image">
+             <%= cl_image_tag("Screen_Shot_2016-12-01_at_12.27.37_pm_y9ujqs.png", height: 230)  %>
+             <span class="card-title"><p >Heading</p></span>
+                 Complete calendar
+           </div>
+           <div class="card-action">
+             <p><%= "Full calendar" %></p>
+           </div>
+         </div>
+       </div>
+
+       <div class="col s12 m4 center">
+         <div class="card hoverable center">
+           <div class="card-image">
+             <%= cl_image_tag("Screen_Shot_2016-12-01_at_12.27.08_pm_ddswgr.png", height: 230)  %>
+             Communicate effectively
+           </div>
+           <div class="card-action">
+             <p><%= "Full calendar" %></p>
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+   </div>
+
+   <div class="col hide-on-small-only m1">
+     <ul class="section table-of-contents">
+       <li><a href="#home">Header</a></li>
+       <li><a href="#initialization">Intialization</a></li>
+       <li><a href="#structure">Overview</a></li>
+     </ul>
+   </div>
+
+ </div>

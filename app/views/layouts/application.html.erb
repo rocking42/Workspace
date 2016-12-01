@@ -15,6 +15,10 @@
 <%= javascript_include_tag Ckeditor.cdn_url %>
 <%= render 'layouts/navbar' %>
 
+<% if current_page?(controller: 'pages',action: 'home') == true %>
+ <%= render 'layouts/home' %>
+<% end %>
+
 <div class="container">
 
   <% flash.each do |message_type, message|  %>
@@ -26,5 +30,10 @@
 </div>
 
 
+ <script>
+   $(document).ready(function(){
+     $('.scrollspy').scrollSpy();
+   });
+ </script>
 </body>
 </html>

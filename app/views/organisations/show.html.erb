@@ -3,6 +3,7 @@
 <p><%= @org.description %></p>
 <p><%= link_to "Members", org_user_path(@org) %></p>
 <p><%= link_to "Shedule", org_cal_path(@org) %></p>
+
 <div class="center">
   <div class="row width">
     <div class="col s12 m12">
@@ -10,10 +11,12 @@
         <div class="card-content white-text">
           <span class="card-title"><p ><%= link_to "Today", org_cal_path(@org), class: "white-text" %></p></span>
           <hr>
+            <% count = 0 %>
             <% @org.group_projects.each do |gp| %>
-              <% if gp.start_date <= Time.now && gp.end_date >= Time.now %>
+              <% if gp.start_date <= Time.now && gp.end_date >= Time.now && count < 2 %>
                   <p><%= gp.task %></p>
                   <p><%= gp.start_date %></p>
+                  <% count += 1 %>
                   <hr>
               <% end %>
           <% end %>

@@ -6,8 +6,31 @@
 
 <p><%= link_to "Members", group_user_path(@group) %></p>
 
+<div class="center">
+<div class="row width">
+  <div class="col s12 m12">
+    <div class="card blue darken-2 darken-1 hoverable center">
+      <div class="card-content white-text">
+        <span class="card-title"><p ><%= link_to "Today", org_cal_path(@group.organisation), class: "white-text" %></p></span>
+        <hr>
+          <% count = 0 %>
+          <% @group.organisation.group_projects.each do |gp| %>
+            <% if gp.start_date <= Time.now && gp.end_date >= Time.now && count < 2 %>
+                <p><%= gp.task %></p>
+                <p><%= gp.start_date %></p>
+                <% count += 1 %>
+                <hr>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="card-action">
+        <p><%= link_to "Full calendar", org_cal_path(@group.organisation), class: "white-text" %></p>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render partial: "shared/post", locals: { :group => @group, :all_post => @all_post, :path => group_post_path(@group) } %>
-
+</div>
 <% if @current_user.groups.include?(@group) && @group.organisation.users.include?(@current_user) %>
   <%= link_to "Leave group", group_leave_path(@group) %>
 <% end %>

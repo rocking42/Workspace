@@ -21,7 +21,23 @@
   }
 }
 
+#initialization {
+  margin: 2px 1px 361px 1px;
+}
 
+.high {
+  height: 100vh;
+}
+
+.cont {
+  background: black;
+  height: 100vh;
+}
+
+.table-of-contents {
+  position: fixed;
+  margin-top: 15%;
+}
 
 .simple-calendar {
   position: absolute;
