@@ -12,6 +12,7 @@
 </head>
 <body >
 
+<%= javascript_include_tag Ckeditor.cdn_url %>
 <%= render 'layouts/navbar' %>
 
 <% if current_page?(controller: 'pages',action: 'home') == true %>
