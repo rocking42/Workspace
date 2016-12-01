@@ -1,25 +1,23 @@
-
-
-    <div class="col s12 m4">
-      <div class="card hoverable center">
-        <div class="card-content">
-          <span class="card-title"><p><%= link_to "Group posts", path %></p></span>
-          <% if all_post.count > 3 %>
-            <% 4.times do |n| %>
-              <% unless all_post.blank? %>
-                <p class=""><%= all_post[n].user.name %>: <%= truncate ActionView::Base.full_sanitizer.sanitize(all_post[n].post.html_safe.strip!) %></p>
-              <% end %>
-            <% end %>
+<div class="col s12 m4">
+  <div class="card hoverable center">
+    <div class="card-content">
+      <span class="card-title"><p><%= link_to "Group posts", path %></p></span>
+      <% if all_post.count > 3 %>
+        <% 4.times do |n| %>
+          <% unless all_post.blank? %>
+            <p class=""><%= all_post[n].user.name %>: <%= truncate ActionView::Base.full_sanitizer.sanitize(all_post[n].post.html_safe.strip!) %></p>
           <% end %>
-        </div>
-        <div class="card-action">
-          <% group.users.each.with_index do |user, i| %>
-            <% if user.image && i <= 10 %>
-              <%= link_to user, class: "profile-spacing" do %>
-                <%= cl_image_tag("#{user.image}.jpg", class: "image-small")  %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
+    <div class="card-action">
+      <% group.users.each.with_index do |user, i| %>
+        <% if user.image && i <= 10 %>
+          <%= link_to user, class: "profile-spacing" do %>
+            <%= cl_image_tag("#{user.image}.jpg", class: "image-small")  %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

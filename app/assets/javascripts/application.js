@@ -16,5 +16,5 @@
 //= require materialize
 //= require jquery.remotipart
 //= require organisations
-
+//= require ckeditor/init
 //= require_tree .
